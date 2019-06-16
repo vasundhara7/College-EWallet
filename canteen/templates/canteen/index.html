@@ -1,0 +1,56 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body %}
+<title>{% block title %}Canteen{% endblock %}</title>
+<br><br><br>
+
+<center>
+  <div style="padding-left:5%">
+    <div class='container' style="background-color:white;width:40%;height:400px;float:left;margin:3%;">
+    <form action="{% url 'canteen:confirmpay' %}" method="post">
+      {% csrf_token %}
+      <div class='h1'>Buy Item</div><br><br>
+      <h4>Amount : <input type="number" required name="amount" style='margin: 8px 0;
+                                                display: inline-block;
+                                                border: 1px solid #ccc;
+                                                border-radius: 4px;
+                                                box-sizing: border-box;
+                                                height:40px;
+                                                width:60%;'/><br><br><br>
+      <input type="submit" class="mybutton" value='Pay'/>
+    </form>
+    </div>
+  </div>
+</center>
+
+<center>
+ <div style="padding-right:5%">
+    <div class='container' style="background-color:white;width:30%;height:420px;float:right;margin-right:10%;margin-top:3%">
+    <form action="{% url 'canteen:order' %}" method="post">
+      {% csrf_token %}
+      <div class='h1'>Order Item</div><br><br>
+      <h4>Item Name : <input type="text"required name="item" style='margin: 8px 0;
+                                                display: inline-block;
+                                                border: 1px solid #ccc;
+                                                border-radius: 4px;
+                                                box-sizing: border-box;
+                                                height:40px;
+                                                width:60%;'/><br>
+      <h4>&nbsp;&nbsp;&nbsp;Quantity : <input required type="number" name="amount" style='margin: 8px 0;
+                                                display: inline-block;
+                                                border: 1px solid #ccc;
+                                                border-radius: 4px;
+                                                box-sizing: border-box;
+                                                height:40px;
+                                                width:60%;'/><br><br><br>
+
+      <input type="submit" class="mybutton" value='Order'/>
+    </form>
+    </div>
+ </div>
+</center>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+  {%  endblock body  %}

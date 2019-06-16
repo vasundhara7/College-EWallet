@@ -1,0 +1,38 @@
+{% extends 'dashboard/base.html' %}
+<head>
+
+</head>
+
+{% block body %}
+
+    <script> type="text/javascript">
+        $(function(){
+            $("#id_title").addClass("form-control");
+            $("#id_body").addClass("form-control");
+
+        });
+    </script>
+    <br><br><br>
+
+
+    <a href="{% url 'mess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-6">
+<div class="container-small" style="background-color: white;border: 3px solid #e6e6e6;padding:1px;">
+
+
+    <center><h3>New post</h3></center>
+    <div style="padding:10px;">
+    <form method="POST" class="">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+        </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}

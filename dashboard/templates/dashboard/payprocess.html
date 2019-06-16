@@ -1,0 +1,44 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block extrahead %}
+
+{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}"/>
+
+{% block body %}
+
+<br><br><br><br>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="col-lg-3 cols" >
+                    <h3>Receiver profile</h3>
+                    <p><span class="glyphicon glyphicon-user"></span> <strong>{{ receiver.username}}</strong></p>
+                    <p>Phone number: {{receiver_profile.phone_number }}</p>
+
+                </div>
+                <div class="col-lg-7 cols text-center" style="margin-left: 50px;">
+
+                    <h2 class="text-center">Transaction of Rs.{{ amount }} {{ message1 }}!</h2>
+                    <p>{{ message2 }}</p>
+                    <a href="{% url 'dashboard:accounts' %}">Go to home page</a>
+                </div>
+                </div></div>
+            <div class="row">
+                <div class="col-12">
+                <div class="col-3 cols" style="width: 21vw;margin-left: 15px;margin-top: 10px;">
+                    <p><span class="glyphicon glyphicon-user"></span> <strong>{{ user.username }}</strong></p><br>
+                    <p>Wallet balance: {{user.profile.balance }}</p><br>
+                    <a href="{% url 'recharge:recharge' %}">Recharge your wallet</a>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        </div></div>
+
+{% endblock %}

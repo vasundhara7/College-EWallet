@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block extrahead %}
+
+    <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css">
+        <script type="text/javascript" src="{% static 'dashboard/js/index.js' %}"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+{% endblock %}
+{% block body %}
+
+    <div class="container-fluid main-div">
+        <div class="container">
+            <div class="row" style="border-bottom: 1px #e0e0e0 solid">
+                    <div class="col-lg-6" style="margin:40px;">
+                        <div class="row">
+                            <div class="profile">
+                                    <img src="{{ user.profile.picture.url }}" style="width: 100px;height: 100px;border-radius: 50%"/>
+
+                            </div>
+                            <div class="head-desc">
+                              <a href='{% url 'mess.offers' %}'><button class="get-more">
+                                  Get more out of PayU<i class="fas fa-chevron-down"></i>
+                              </button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5" style="margin-top: 40px">
+                      <div class="row">
+                        <div class="col-3">
+                            <a href="{% url 'usermess.index' %}"><span class="goods"><br><center>Mess</center>
+                            </span></a>
+                        </div>
+                        <div class="col-3">
+                           <a href="{% url 'canteen:canteen.index' %}"><span class="goods"><br><center>Canteen</center>
+                            </span></a>
+                        </div>
+                        <div class="col-3">
+                            <a href="{% url 'librarian.library' %}"><span class="goods"><br><center>Library</center>
+                            </span></a>
+                        </div>
+                        <div class="col-3" style="margin-left:10px;">
+                            <a href="{% url 'cycleshare.ui' %}"><span class="goods"><br><center>Cycles</center>
+                            </span></a>
+                        </div>
+                        {% for i in forms %}
+                        <div class="col-3">
+                            <a href="{{ i.get_absolute_url }}"><span class="goods"><br><center>{{ i.title }}</center>
+                            </span></a>
+                        </div>
+                        {% endfor %}
+
+                      </div>
+                        </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 balance shadow p-3 mb-5 bg-white rounded">
+                    <p style="margin-top:10px;font-weight: 600;">PayU balance
+                    <span class="detail" style="float:right;">Details</span></p>
+                    <p class="text-muted">You don't need balance to shop or send payments</p>
+                    <p style="font-weight: 600;">Currencies
+                    <br>&#8377; {{ user.profile.balance }}</p>
+                    <a href="http://127.0.0.1:8000/recharge" style="color:#0070ba;font-weight: 600;" class="detail">Recharge</a>
+                </div>
+                <div class="col-lg-7 activity">
+                    <p style="margin-top:20px;font-weight: 600;">Recent Activity <span style="float:right;"><i class="fas fa-chevron-right"></i></span></p>
+                    <p style="margin-top:20px;">Keep track of your most recent activity here when you shop, or send or receive payments.</p>
+                    <p style="margin-top:20px;">Don't see a past payment? Search by date in your <a href="#"><span class="detail" style="font-weight:600;color:#0070ba;cursor: pointer;">activity</span></a>.</p>
+                    <p style="margin-top:20px;">Shopping for something? <span class="detail" style="color:#0070ba;cursor: pointer;font-weight: 600;">Find places that accept PayPal</span>.</p>
+                    <a href="{% url 'mess.offers' %}" <p class="detail" style="color:#0070ba;font-weight: 600;" align="center">View all</p></a>
+                </div>
+            </div>
+            <div class="col-lg-4 balance">
+                <p style="font-weight: 600;margin-top:20px;margin-left:10px;">Bank and Cards</p>
+                <p class="detail" align="center" style="color:#0070ba;font-weight: 600;border-bottom: 1px #e0e0e0 solid;padding:10px;"> x-4682</p>
+                <p class="detail" align="center" style="color:#0070ba;font-weight: 600;border-bottom: 1px #e0e0e0 solid;padding:10px;">MasterCard x-5446</p>
+                <p class="detail" style="color:#0070ba;font-weight: 600;"><i class="fas fa-plus-circle"></i> Link a card</p>
+            </div>
+            <div class="col-lg-4 balance">
+                <p class="detail" style="margin-top:20px;margin-left:10px;font-weight: 600;">Selling tools <span style="float:right;color:#0070ba;">Details</span></p>
+                <p class="detail" style="color:#0070ba;font-weight: 600;"><a href="">Manage invoices</a>
+                    <br>Merchant fees</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

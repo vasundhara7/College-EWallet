@@ -1,0 +1,91 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block body %}
+<br><br><br><br><br>
+<!--<section style="background-color: #fff; width: 50vh;">
+<p>Receiver: {{ receiver.username }}</p>
+<p>Phone number: {{receiver_profile.phone_number }}</p>
+</section>
+
+
+<section style="background-color: #fff; width: 50vh;">
+<p>Sender: {{ user.username }}</p>
+<p>Wallet balance: {{user.profile.balance }}</p>
+</section>
+
+<section style="background-color: #fff; width: 50vh;">
+
+<form method="post" action="{% url 'dashboard:pay_a_friend' %}">
+    {% csrf_token %}
+    <input type="hidden" name="username" value="{{receiver.username}}" />
+    Amount:<input type="number" min="0" name="amount"><br>
+    Enter your password to continue:<input type="password" name="password">
+                  <input type="submit" class="btn btn-danger" value="Pay">
+</form>
+
+</section>-->
+
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="col-lg-3 cols" >
+                    <h3>Receiver profile</h3>
+                    <p><span class="glyphicon glyphicon-user"></span> <strong>{{ receiver.username}}</strong></p>
+                    <p>Phone number: {{receiver_profile.phone_number }}</p>
+
+                </div>
+                <div class="col-lg-7 cols" style="margin-left: 50px;">
+                    <!--<form method="post" action="{% url 'dashboard:pay_a_friend' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="username" value="{{receiver.username}}" />
+                         Amount:<input type="number" min="0" name="amount"><br>
+                        Enter your password to continue:<input type="password" name="password">
+                        <input type="submit" class="btn btn-danger" value="Pay">
+                    </form>-->
+                    <form class="form-horizontal" method="post" action="{% url 'dashboard:pay_a_friend' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="hidden" name="username" value="{{receiver.username}}" />
+
+                            <label class="control-label col-sm-2" for="amount">Amount:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" min="0" name="amount" placeholder="Enter amount here">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="pwd">Password:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" placeholder="Enter password">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 text-center">
+                                <button type="submit" class="btn btn-danger" style="width: 80px;">Pay</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                </div></div>
+            <div class="row">
+                <div class="col-12">
+                <div class="col-3 cols" style="width: 21vw;margin-left: 15px;">
+                    <p><span class="glyphicon glyphicon-user"></span> <strong>{{ user.username }}</strong></p><br>
+                    <p>Wallet balance: {{user.profile.balance }}</p><br>
+                    <a href="{% url 'recharge:recharge' %}">Recharge your wallet</a>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        </div></div>
+
+
+{% endblock %}

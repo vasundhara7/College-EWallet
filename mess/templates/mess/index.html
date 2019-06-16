@@ -1,0 +1,200 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}mess{% endblock %}
+{%  block body %}
+<br><br><br><br>
+{% if error %}
+   <h1>{{error}}</h1>
+{% else %}
+
+{%endif%}
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+		<div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Add new coupons</h3>
+		<form action="{% url 'mess.addcoupon' %}" method="post">
+			{% csrf_token %}<span style="font-size:20px;">
+			Amount:</span>
+			<div class="form-group row">
+			<div class="col-xs-3"> <input type="number" required class="form-control" id="couponamount" name="amount" > </div><br>
+			</div>
+
+			<span style="font-size:20px;">Number of Coupons: <br></span>
+			<div class="form-group row">
+			<div class="col-xs-3"> <input type="number" class="form-control" id="count" name="count" value="10"> </div><br>
+			</div>
+			<!--<input class="form-control" type="number" name="count" value="10"  > <br>-->
+			<input style="" class ="btn btn-primary" type="submit" onclick="" value="Add Coupons">
+			</form>
+		 </div>
+		<br>
+        <div class="container-small" style="background-color:white; padding:10px;">
+		    <a href="{% url 'mess.allcoupons' %}"><h3>Available Coupons</h3></a>
+		</div><br>
+		<div class="container-small" style="background-color:white; padding:10px;">
+
+			<h3> Available mess items:</h3>
+			<table class="table">
+                <tr>
+                <th style="text-align:center"> Name</th>
+                <th style="text-align:center"> Amount</th>
+                <th style="text-align:center"> Delete</th>
+                <th style="text-align:center"> Orders</th>
+                <th style="text-align:center"> Availability</th>
+                </tr>
+                {% for item in data %}
+				<tr><td style=""> <button type="button"  class="btn btn-default">{{ item.orderName}} </button></td>
+				<td style="padding:10px">
+				<button type="button" class="btn btn-default">{{ item.amount}} </button></td>
+				<td style="padding:10px">
+                {%  if item.ordersbought_set.count == 0 %}
+				<form action="{% url 'mess.deleteorder' %}" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="orderid" value="{{item.orderId}}" />
+				<input style="" class ="btn btn-danger" type="submit"  value="Delete"><br>
+                </form>
+                    {% else %}
+                    <button class="btn btn-default" onclick="deleteorder()">Delete</button>
+                    {% endif %}
+                </td>
+                <td style="font-size:18px;text-align:center">
+                    {{ item.ordersbought_set.count }}
+                </td>
+                <td style="padding:10px">
+                    {% if item.valid == 1 %}
+                        <a href="{% url 'mess.changevalid' pk=item.orderId %}"><button class="btn btn-info">Available</button></a>
+                    {% else  %}
+                        <a href="{% url 'mess.changevalid' pk=item.orderId %}"><button class="btn btn-default">Unavailable</button></a>
+                    {% endif %}
+                </td>
+                </tr>
+				{% empty %}
+				<span style="font-size:20px">No orders yet</span>
+				{% endfor %}
+			</table>
+		  <br>
+		</div>
+
+		<br>
+		<div class="container-small" style="background-color:white; padding:10px;">
+		<h2> Add new Orders</h2>
+
+				<form action="{% url 'mess.addorder' %}" method="post">
+			{% csrf_token %}
+			<span style="font-size:20px;">Order Name: </span>
+			<div class="form-group row">
+			<div class="col-xs-6"> <input type="text" required class="form-control"  name="orderName" > </div><br>
+			</div>
+
+
+
+			<span style="font-size:20px;">Amount: </span>
+			<div class="form-group row">
+			<div class="col-xs-3"> <input type="number" required class="form-control"  name="amount" > </div><br>
+			</div>
+
+
+
+
+			<input style="font-size:20px" class ="btn btn-primary" type="submit" onclick="" value="Add Order to menu">
+				</form>
+			</table>
+		  </div>
+
+		<br>
+		<div class="container-small" style="background-color:white;padding:10px;"> <a href="{% url 'mess.couponsbought' %} "><h3>List of coupons bought</h3></a>
+		</div>
+		</div>
+	<div class="col-sm-6">
+
+
+		<div class="container-small" style="background-color:white; padding:10px;">
+
+
+            <a href="{% url 'mess.addpost' %}" class="top-menu"> <h3> Add a message to students </h3> </a>
+
+		</div>
+		<br>
+		<div class="container-small" style="background-color:white; padding:10px;">
+            <a href="{% url 'mess.allposts' %}"><h3> Your Previous Posts </h3></a>
+			{%for post in posts %}
+				<div class="container-small" style="border:3px solid #F5F7FA;padding:5px;background-color:#e6e6e6">
+				<div style="background-color:white;padding:1px">
+
+				<a href="/mess/postdetails/{{post.postId}}"><h4> {{ post.title }} </h4></a> </div><div style="font-size:13px;color:#666666;padding:2px" align="right">{{post.addTime}}</div>
+
+				<p style="font-size:16px"> {{post.body }}</p>
+                </div>
+                <br>
+			{% empty %}
+			<p> No posts. </p>
+			{% endfor %}
+			</div><br>
+
+		<div class="container-small" style="background-color:white; padding:10px;">
+		<h2> Confirm student's coupon</h2>
+
+            <form action="{% url 'mess.confirmcode' %}" method="post">
+			{% csrf_token %}
+            <br>
+                <span style="font-size:20px;">Code: </span>
+                <div class="form-group row">
+
+
+                    <div class="col-xs-3"> <input type="text" required class="form-control"  name="code" > </div><br>
+                    </div>
+                    <input style="font-size:20px" class ="btn btn-primary" type="submit" onclick="" value="Confirm the coupon">
+                        </form>
+                    </table>
+                </div>
+
+        <br>
+    <div class="container-small" style="background-color:white; padding:10px;">
+		<a href="{% url 'mess.reviews' %}"><h4> Reviews By Students</h4></a>
+			</div><br>
+    <div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Pending Orders</h3>
+            <table class="table">
+				<thead> <tr>
+				<th>Item Name</th>
+				<th>Ordered By</th>
+				<th>Amount</th>
+				<th>Delivery Time</th>
+				<th>Action</th>
+
+                </tr></thead>
+			{% for order in allorders%}
+				<tr>
+				<td>{{ order.orderId.orderName }} </td>
+				<td> {{ order.email }}</td>
+				<td> {{ order.orderId.amount }}</td>
+				<td> {{ order.delTime }}</td>
+				<td>
+                    <a href="{%  url 'mess.deleteorderbought' pk=order.id %}"><button class="btn btn-info">Done</button></a>
+                </td>
+
+				</tr>
+			{% empty %}
+			<p> NO orders placed yet. </p>
+			{% endfor %}
+			</table>
+
+    </div>
+
+		</div>
+
+
+	</div>
+	</div>
+	</div>
+	<br>
+	<br>
+
+  {%  endblock body  %}
+
+{% block script %}
+	function deleteorder() {
+    alert("Can't delete the item when its ordered. Make it unavailable if you want to stop taking orders for the item.");
+}
+
+{% endblock script %}

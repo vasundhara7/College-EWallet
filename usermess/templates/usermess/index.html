@@ -1,0 +1,148 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br><br><br><br><br>
+
+{% if error %}
+   <h1>{{error}}<h1>
+{% else %}
+{%endif%}
+<div class="container">
+<div class="row">
+		<div class="col-sm-6">
+		<div class="container-small" style="background-color:white; padding:10px;">
+	<div> 	<h3 style="color:black">Select a coupon to buy</h3>
+	<form action="{% url 'usermess.confirmcoupon' %}" method="post">
+	<div class="form-group row">
+	 {% csrf_token %}
+    <div style="display:none" id ="buyopt">
+	 <div class="col-xs-2"> <input type="text"  class="form-control" id="couponamount" name="amount" readonly/>
+		<input type="text" style="display:none"  id="couponid" name="couponId" />
+	 </div>
+
+	 <input type="submit" class="btn btn-primary" value="Buy"></div>
+	 <br>
+	 </div>
+    </form>
+	{% for coupon in coupons %}
+	<button type="button" class="btn btn-default" value="{{ coupon.couponId }}" onclick="display({{coupon.amount}},{{coupon.couponId}})" style="font-size:18px">{{ coupon.amount	 }}</button>
+	{% empty %}
+	<p>No Coupons yet</p>
+
+	{% endfor %}
+	</div>
+        </div><br>
+        <div class="container-small" style="background-color:white; padding:10px;">
+
+	<div><a href="{% url 'usermess.yourcoupons' %} "><span style="font-size:20px">Your coupons</span    ></a>
+	</div>
+	</div>
+	<br>
+	<div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Special Items available for Ordering </h3>
+			<table class="table">
+				<thead> <tr>
+				<th>Item Name</th>
+				<th>Amount</th>
+				<th>Action</th>
+				</tr>
+			{% for order in orders%}
+				<tr>
+				<td>{{ order.orderName }} </td>
+				<td> {{ order.amount }}</td>
+				<td>
+                     <a href="{% url 'usermess.buyorder' pk=order.orderId %}"><button class="btn btn-info" value="Buy">Place Order</button></a>
+                </td>
+
+				</tr>
+			{% empty %}
+			<p> NOT available yet. </p>
+			{% endfor %}
+			</table>
+
+		</div><br>
+        <div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Write your reviews </h3>
+            <form action="{% url 'usermess.writereview' %}" method="post">
+                {%  csrf_token %}
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input required class="form-control" type="text" name="reviewsubject" id="subject"/><br>
+                  <label for="comment">Comment:</label>
+                  <textarea required  class="form-control" rows="5" name = "reviewbody" id="comment"></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary"/>
+            </form>
+		</div>
+    </div>
+
+        <div class="col-sm-6">
+
+
+		<div class="container-small" style="background-color:white; padding:10px;">
+
+            <a href="{% url 'usermess.allposts' %}" class="top-menu"> <span style="font-size:20px"> All posts by Mess vendor </span> </a>
+
+		</div>
+        <br>
+		<div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Recent posts by the vendor</h3>
+			{%for post in posts %}
+				<div class="container-small" style="border:3px solid #F5F7FA;padding:5px;background-color:#e6e6e6">
+				<div style="background-color:white;padding:1px">
+
+				<h4> {{ post.title }} </h4> </div>
+                    <div style="font-size:13px;color:#666666;padding:2px" align="right">{{post.addTime}}</div>
+
+				<p style="font-size:16px"> {{post.body }}</p>
+                </div>
+                <br>
+			{% empty %}
+			<p> No posts. </p>
+			{% endfor %}
+			</div><br>
+
+        <div class="container-small" style="background-color:white; padding:10px;">
+            <a href="{%  url 'usermess.menu' %}"><h3>Mess time table</h3> </a>
+		</div><br>
+
+         <div class="container-small" style="background-color:white; padding:10px;">
+		<h3> Your Orders</h3>
+			<table class="table">
+				<thead> <tr>
+				<th>Item Name</th>
+				<th>Amount</th>
+                    <th>Delivery Time</th>
+				</tr>
+			{% for yourorder in yourorders%}
+				<tr>
+				<td>{{ yourorder.orderId.orderName }} </td>
+				<td> {{ yourorder.orderId.amount }}</td>
+                <td> {{ yourorder.delTime}} </td>
+
+				</tr>
+			{% empty %}
+			<p> NO Orders yet. </p>
+			{% endfor %}
+			</table>
+		</div><br>
+
+        </div>
+</div>
+
+
+
+
+{%  endblock body  %}
+
+{% block script %}
+
+   function display(a,b)
+		{
+			document.getElementById("couponamount").value=parseInt(a);
+			document.getElementById("couponid").value=b;
+			document.getElementById("buyopt").style.display="block";
+
+		}
+
+{% endblock script %}

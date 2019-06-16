@@ -1,0 +1,36 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br>
+<br><br>
+ <a href="http://127.0.0.1:8000/mess/"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+    <div class="container">
+    <div class="row">
+		<div class="col-sm-8">
+		    <div class="container-small" style="background-color:white; padding:10px;">
+            <h3 style="text-align:center;color:#666666"> All posts</h3>
+                {% for post in posts %}
+                    <table class="table">
+                    <tr>
+                        <td>
+                            <a style="text-decoration:none" href="/mess/postdetails/{{post.postId}}">
+
+                                <u style="font-size:15px;">{{ post.title }}</u><br></a>
+                            {{ post.body}}<br>
+                            <span style="font-size:12px;color: #a6a6a6;">{{ post.addTime}}</span>
+                        </td>
+                    </tr>
+
+                    </table>
+                {%  endfor %}
+            </div>
+        </div>
+    </div>
+</div><br><br><br>
+
+{%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

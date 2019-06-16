@@ -1,0 +1,41 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}mess{% endblock %}
+{%  block body %}
+
+<br><br>
+     <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+            <div class="container-small" style="background-color:white; padding:10px;">
+                <h3>Your reviews</h3>
+                <table class="table">
+				<thead> <tr>
+				<th>Subject</th>
+				<th>Body</th>
+				</tr>
+			    {% for review in reviews%}
+				<tr>
+				<td> {{ review.subject }}</td>
+				<td> {{ review.body}}</td>
+
+				</tr>
+                {% empty %}
+                <p> NO Reviews Yet. </p>
+                {% endfor %}
+                </table>
+                </div>
+
+        </div>
+        </div>
+        </div>
+
+
+
+
+  {%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

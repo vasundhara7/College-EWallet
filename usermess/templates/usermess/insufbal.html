@@ -1,0 +1,25 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br>
+<br><br>
+ <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+    <div class="container">
+    <div class="row">
+		<div class="col-sm-6">
+		    <div class="container-small" style=" padding:10px;">
+            <span style=" font-size:30px;text-align:center;color:#666666"> Insufficient Balance</span><br>
+                <a href="{% url 'recharge:recharge' %}">
+                    Recharge here.
+                </a>
+            </div>
+        </div>
+    </div>
+</div><br><br><br>
+
+{%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

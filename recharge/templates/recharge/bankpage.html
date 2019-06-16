@@ -1,0 +1,7 @@
+<form name="option" action="response" method="POST">
+    {% csrf_token %}
+    amount transferring is {{ amount }}
+    <input type="radio" name="success"> SUCCESS
+    <input type="radio" name="failure"> FAILURE
+    <input type="submit" value="Pay">
+</form>

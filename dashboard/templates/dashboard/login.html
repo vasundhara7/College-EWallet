@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto" rel="stylesheet">
+
+</head>
+<body style="background-color: #F5F7FA">    <br><br><br>
+
+<div class="container" style="width: 500px; height: 350px ; background-color: #ffffff;  border:1px #e0e0e0 solid;border-radius: 6px;font-family: 'Open Sans ',serif">
+      <h2 class="text-center">Login</h2>
+    <hr>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+      <br>
+    <button type="submit" class="btn btn-danger text-center" style="margin-left:180px; ">LogIn</button>
+  </form>
+    <a href="{% url 'password_reset' %}" style="margin-left:170px;">Forgot password?</a></div>
+</body>
+</html>

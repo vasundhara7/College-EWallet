@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All</title>
+     {% load static from staticfiles %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+  .booking{
+
+            margin-bottom:350px;
+            margin-left:450px;
+            margin-right:450px;
+            padding:15px;
+
+        }
+      body{
+       background-color: #f5f7fa;
+
+}
+
+.navbar-default{
+    border-radius: 0;
+    background-color: #0055b4 !important;
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.navbar-default .navbar-brand{
+    color:white;
+    padding-right: 50px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+            <a class="navbar-brand" href="#">PayU</a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>&nbsp;
+                        Send and Request money
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>&nbsp;
+                        Recharge your wallet
+                    </a>
+                </li>
+                <li class="">
+                    <a href=" #">
+                        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;
+                        Offers
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp;Notifications
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+    {% block body %}
+
+    {% endblock %}
+
+<center>
+<div class="booking">
+<table>
+  <tr>
+      <th>Student ID</th>
+      <th>Book ID</th>
+      <th>Date</th>
+
+  </tr>
+
+
+
+
+
+{% for all in form %}
+<tr><td>{{ all.student_ID }}</td>
+    <td>{{all.book_ID}} </td>
+    <td>{{all.date}}</td> <br>
+</tr>
+    {% endfor %}
+</table>
+    </div>
+</center>
+</body>
+</html>
+

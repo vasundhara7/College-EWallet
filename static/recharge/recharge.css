@@ -1,0 +1,25 @@
+.wallet{
+  height: 250px;
+  width: 27%;
+  background-color: white;
+  position: relative;
+  left: 100px;
+}
+
+.rechform{
+  height: 430px;
+  width: 35%;
+  background-color: white;
+  position: relative;
+  left: 180px;
+}
+
+.wbalance{
+  font-size: 20px;
+  text-align: left;
+}
+
+.smallc{
+  font-size: 12px;
+  color: rgb(180,180,180);
+}

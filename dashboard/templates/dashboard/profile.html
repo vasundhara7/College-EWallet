@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body %}
+      <div class="container">
+      <h1>Profile</h1>
+            <p>Username: {{ user }}</p>
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{ user.last_name }}</p>
+            <p>Email: {{ user.email }} </p>
+            <p>Phone Number:{{ user.profile.phone_number }} </p>
+            <p>Picture:<br><img src="{{ user.profile.picture.url }}" width="240px" height="240px"/> </p>
+
+
+            <a href="{% url 'dashboard:edit_profile' %}">Edit Profile</a><br>
+            <a href="{% url 'dashboard:change_password' %}">Change your password here !</a>
+      </div>
+{% endblock %}

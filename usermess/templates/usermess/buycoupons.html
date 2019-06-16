@@ -1,0 +1,27 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br>
+<br>
+<br>
+         <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+	<div class="container">
+	<h2> You have bought the following coupon </h2>
+	<br>
+	{% for item in coupon %}
+	<button type="button" class="btn btn-default" value="{{ item.couponId.amount }}" style="font-size:18px">{{ item.amount }}</button>
+
+	{% empty %}
+	<h3> Empty? <a href="{% url 'usermess' %} ">Buy here </h3>
+
+	{% endfor %}
+	<br>
+	<br>
+	</div>
+	<br>
+	<div class= "container">
+	<a href="{% url 'usermess.yourcoupons' %} "><h3>View all your coupons</h3></a>
+	</div>
+
+{%  endblock body  %}

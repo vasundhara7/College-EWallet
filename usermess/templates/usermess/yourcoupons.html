@@ -1,0 +1,45 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br>
+<br>
+<br>
+    <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+
+	<div class="container">
+	<h1> Your Coupons </h1>
+
+	<br>
+            <span>Click on Use and confirm with vendor to use the coupon.</span>
+    <br>
+	{% for item in coupons %}
+	<button type="button" class="btn btn-default" value="{{ item.couponId.amount }}" style="font-size:18px">{{ item.couponId.amount }}</button>
+    <button type="button" class="btn btn-info" onclick="show({{ item.couponId.couponId }})">Use</button>
+    <button type="button" style="visibility:hidden" id="{{item.couponId.couponId}}" class="btn btn-primary">{{ item.couponId.slug }}</button>
+
+        <br><br>
+
+
+	{% empty %}
+    <h3> Empty? <a href="{% url 'usermess.index' %}">Buy here</a> </h3>
+
+	<br>
+	<br>
+	{% endfor %}
+	</div>
+
+	<br>
+
+
+{%  endblock body  %}
+{%  block script %}
+    function show(id){
+        if (document.getElementById(id).style.visibility = 'hidden'){
+            document.getElementById(id).style.visibility='';
+        };
+        if (document.getElementById(id).style.visibility = ''){
+            document.getElementById(id).style.visibility = 'hidden';
+        };
+    }
+{% endblock %}

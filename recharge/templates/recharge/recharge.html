@@ -1,0 +1,52 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Recharge{% endblock %}
+
+{%  block body %}
+
+<br><br><br><br><br><br>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 wallet">
+      <br>
+        <span class='wbalance'>Wallet Balance<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='#' style='font-size:14px;'>Details ></a><br>
+        <small class='smallc'>Use this balance to shop across Indian Institute of Information Technology, Sri City</small><br><br>
+        &nbsp;&nbsp;<span style='font-size: 18px'>Currencies:</span><br>
+        &nbsp;&nbsp;<strong><span style='font-size: 17px'>&#x20B9; {{balance}}</span></strong><br><br>
+        <a href="#" style='font-size:14px; '>See Transactions</a>
+    </div>
+    <div class="col-md-6 rechform">
+      <div>
+
+              <div>
+                <br>
+                  <h2 style='text-align:left;'> Recharge </h2><hr>
+                <br>
+              </div>
+              <table>
+                  <form name="postForm" method="POST" >
+                      {% csrf_token %}
+                      <span style="font-size: 23px; text-align:left;">Amount :</span><br>
+                      <input type="number" name="amount" style='margin: 8px 0;
+                                                                display: inline-block;
+                                                                border: 1px solid #ccc;
+                                                                border-radius: 4px;
+                                                                box-sizing: border-box;
+                                                                height:40px;
+                                                                width:60%;'/>
+                      <br><br><br>
+                      <small class='smallc'>Note:- You will be redirected to dummybank's page on clicking the pay button.</small>
+                      <br><br>
+                      <input type="submit" class="mybutton" value='Pay'/>
+                  </form>
+              </table>
+
+      </div>
+    </div>
+    </div>
+</div>
+<br><br><br>
+
+{%  endblock body  %}

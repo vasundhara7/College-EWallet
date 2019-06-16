@@ -1,0 +1,24 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}{% endblock %}
+{%  block body %}
+
+        <br><br><br>
+<div class="container">
+<div class="row">
+
+<div class="col-sm-6">
+    <div class="container-small" style="background-color:white;padding:10px;">
+		<br>
+		<h2>Do you want to pay {{value}} to the vendor?</h2>
+		<a href="{% url 'cycleshare.paysub' amount=value %}"> <button class="btn btn-primary"> Yes</button></a>
+		<a href="{% url 'cycleshare.subscribe' %}"><button class="btn btn-danger"> No</button></a>
+		<br><br><br><br>
+		</div>
+	</div>
+	</div>
+	</div>
+  {%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

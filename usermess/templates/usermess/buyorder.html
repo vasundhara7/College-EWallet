@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body %}<br><br><br>
+     <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-8">
+<div class="container-small" style="background-color: white;border: 3px solid #e6e6e6;padding:1px;">
+
+
+
+    <div style="padding:10px;">
+    <form action="{% url 'usermess.buyorder2'  %}" method="post">
+	<div class="form-group row">
+	 {% csrf_token %}
+	 <div class="col-xs-5">
+         <h3>New Order</h3>
+         Order Name : <input type="text" class="form-control" value="{{  order.orderName}}" name="orderName" readonly="readonly"/><br>
+
+
+         Amount : <input type="text" class="form-control" value="{{  order.amount}}" name="amount" readonly="readonly"/><br>
+         <input type="hidden" class="form-control" value="{{  order.orderId}}" name="orderId" readonly="readonly"/>
+
+            Delivery time: <input type="text"  required class="form-control" id="couponid" name="delTime" />
+	         <span style="color: #666666;font-style:italic;">Enter the date format <br> as YYYY-MM-DD HH:MM:SS </span>
+            <br><br> <span style="color: #666666;font-style:italic;"> NOTE : Order takes minimum 2 hours. Choose your delivery time accordingly.</span>
+            <br><br>
+         <input type="submit" class="btn btn-primary" value="Confirm"/>
+
+     </div>
+
+
+	 <br>
+	 </div>
+    </form>
+        </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}

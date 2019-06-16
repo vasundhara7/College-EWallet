@@ -1,0 +1,31 @@
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background-color: #F5F7FA"><br><br><div class="container" style="background-color: #ffffff; width: 500px;border:1px #e0e0e0 solid;border-radius: 6px;font-family: 'Open Sans ',serif">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center"><strong>Join Today</strong></legend>
+
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted"><a class="ml-2" href="{% url 'dashboard:login' %}">Already have an account?</a> </small>
+    </div></div>
+</body>
+</html>

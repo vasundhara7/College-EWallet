@@ -1,0 +1,53 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}mess{% endblock %}
+{%  block body %}
+
+<br><br>
+     <a href="/dashboard/accounts"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-12">
+      <center>
+          <div class='container'  style="background-color:white;width:60%;margin:3%;float:left;margin-bottom:0px"><br>
+          <div class='h1'>Transactions</div><br>
+
+        <table class='table'>
+          <col width="35%">
+          <col width="20%">
+          <col width="45%">
+            <tr style="border-bottom: solid #aaaaaa">
+              <th>Purpose</th>
+              <th>Amount</th>
+              <th>Time</th>
+            </tr>
+            {% for det in details %}
+              <tr>
+                <td> {{ det.Recipient }} </td>
+                <td> {{ det.Amount }} </td>
+                <td> {{ det.Time }} </td>
+              </tr>
+            {% endfor %}
+        </table>
+
+<br><br><br><br><br>
+        <div style="float:left;font-size:15px"><a href={% url 'trans:trans.down' %}>Download my Invoice</a></div>
+         <div style="float:right;font-size:15px"><a href={% url 'trans:trans.mail' %}>Mail my Invoice</a></div>
+         <br><br><br><br><br>
+
+        </div>
+      </center>
+
+
+        </div>
+        </div>
+        </div>
+
+
+
+
+  {%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

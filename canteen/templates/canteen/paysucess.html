@@ -1,0 +1,21 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Recharge{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+{% endblock %}
+
+{%  block body %}
+
+<br><br><br><br><br><br>
+
+<div class='container' id='payment' style="visibility: visible;background-color:white; width:30%; height:450px;">
+<center>
+payment is sucessful <br>
+payed by {{ card }}  <br>
+amount:{{ amount }}
+<center>
+</div>
+
+{%  endblock body  %}

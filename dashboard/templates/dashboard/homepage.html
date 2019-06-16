@@ -1,0 +1,661 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PayU</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/landing.css' %}">
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+  .carousel-inner img {
+      width: 100%; /*Set width to 100%*/
+      margin: auto;
+      min-height:200px;
+  }
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #ffffff;
+
+}
+
+.header-text h2 {
+    font-size: 40px;
+}
+
+.header-text h2 span {
+	padding: 10px;
+}
+
+.header-text h3 span {
+	padding: 15px;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+    border-radius: 20%;
+}
+
+.btn-theme {
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    margin-right: 15px;
+}
+
+.btn-theme:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.quote{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    padding: 20px;
+    padding-bottom: 0px;
+    margin: 50px;
+    margin-bottom: 0px;
+    font-size: 45px;
+}
+   hr{
+       margin-top: 5px;
+   }
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+  }
+      .quote{
+    font-weight: lighter;
+    padding: 20px;
+    padding-bottom: 0px;
+    margin: 50px;
+    margin-bottom: 0px;
+    font-size: 45px;
+}
+   hr{
+       margin-top: 5px;
+   }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">PayU</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'dashboard:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="{% url 'dashboard:register' %}"><span class="glyphicon glyphicon-log-in"></span> Signup</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!-- Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides-->
+    <div class="carousel-inner" role="listbox" style="height: 650px;">
+      <div class="item active">
+        <img src="{% static 'dashboard/images/home3.jpg' %}" alt="Image" >
+                <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                            	<span>Pay with <strong>PAY U</strong></span>
+                            </h2>
+                            <br><br><br>
+                            <h3>
+                            	<span>Register today and pay for services available all over the campus.</span>
+                            </h3>
+                            <br>
+                            <div class=""><br>
+                               <a class="btn btn-theme btn-sm btn-min-block" href="{% url 'dashboard:register' %}">Sign Up for free</a>
+                            </div>
+                        </div>
+                </div>
+      </div>
+
+      <div class="item">
+        <img src="{% static 'dashboard/images/home2.jpg' %}" alt="Image">
+          <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+
+                            <br><br><br>
+                            <h3>
+                                <span><strong>Join today and enjoy hassle free transactions.</strong></span>
+                            </h3>
+                            <br>
+                            <div class=""><br>
+                               <a class="btn btn-theme btn-sm btn-min-block" href="{% url 'dashboard:register' %}">Sign Up for free</a>
+                            </div>
+                        </div>
+                </div>
+
+      </div>
+    </div>
+
+    <!-- Left and right controls-->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+
+<!--<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse
+  </div><!-- /.container-fluid
+</nav>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+  </ol>
+
+  <!-- Wrapper for slides
+  <div class="carousel-inner" role="listbox" style="height: 650px">
+    <div class="item active">
+      <img src="{% static 'dashboard/images/home3.jpg' %}" alt="..." class="img-responsive">
+        <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                            	<span>Pay with <strong>PAY U</strong></span>
+                            </h2>
+                            <br><br><br>
+                            <h3>
+                            	<span>Register today and pay for services available all over the campus.</span>
+                            </h3>
+                            <br>
+                            <div class=""><br>
+                               <a class="btn btn-theme btn-sm btn-min-block" href="{% url 'dashboard:register' %}">Sign Up for free</a>
+                            </div>
+                        </div>
+                </div>
+
+    </div>
+    <div class="item">
+      <img src="{% static 'dashboard/images/home2.jpg' %}" alt="..." class="img-responsive">
+      <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+
+                            <br><br><br>
+                            <h3>
+                                <span><strong>Join today and enjoy hassle free transactions.</strong></span>
+                            </h3>
+                            <br>
+                            <div class=""><br>
+                               <a class="btn btn-theme btn-sm btn-min-block" href="{% url 'dashboard:register' %}">Sign Up for free</a>
+                            </div>
+                        </div>
+                </div>
+
+      </div>
+    </div>
+
+
+
+  <!-- Controls
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+-->
+
+
+
+
+<div class="container text-center quote"><p>The safer, easier way to pay around campus.</p></div>
+<hr style="width: 5%;height: 4px; background-color: #c12b7b;">
+<br>
+<!--<div class="container-fluid info">
+    <div class="row">
+        <p class="text-center payu">PayU</p></div>
+    <hr style="width: 5%; background-color: white;">
+    <!--<div class="container" style="border: 1px #ffffff solid">
+        <div class="row">
+
+            <div class="col-xs-4 ">  <img src="{% static 'dashboard/images/secure.png' %}" class="img-responsive simple" alt="Cinque Terre" width="200" height="100"><br><p class="text-center">Simple</p></div>
+            <div class="col-xs-4 ">  <img src="{% static 'dashboard/images/cycle.jpg' %}" class="img-responsive simple" alt="Cinque Terre" width="200" height="100"><br><p class="text-center">Secure</p></div>
+            <div class="col-xs-4 ">  <img src="{% static 'dashboard/images/cycle.jpg' %}" class="img-responsive simple" alt="Cinque Terre" width="200" height="100"><br><p class="text-center">Easily Accessible</p></div>
+
+        </div>
+
+    </div>-->
+
+<!--<div class="container text-center">
+  <h3>What We Do</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="{% static 'dashboard/images/canteen.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Pay your Canteen bills</p>
+    </div>
+    <div class="col-sm-4">
+      <img src="{% static 'dashboard/images/cycle.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Rent cycles</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+       <p>Pay your dues with payU.</p>
+      </div>
+      <div class="well">
+       <p>Hassle free recharges.</p>
+      </div>
+    </div>
+  </div>
+</div><br>-->
+
+
+<div class="container3" style="width: 70vw;margin-left:15vw;">
+            <div class="row">
+                <!-- Single Cool Fact-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact-area text-center mb-100" data-aos="flip-right" data-aos-duration="600">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/IN/consumer-activation/protection.svg" style="height: 100px;width: 100px;">
+                        <!--<i class='fas fa-amazon-pay' style='font-size:120px;color: #2aabd2; padding-bottom: 18px'></i>-->
+                        <br><br>
+                        <p style="color: #046A8A; font-weight:bold; font-size: 20px;font-family: 'Open Sans', sans-serif;"><span class="counter">Buyer protection</span></p>
+                        <h6></h6>
+                        <p style="font-family: 'Open Sans', sans-serif;font-weight: bold;">Item not as described? You have our first-of-its-kind 180-day refund window to get a full refund on your purchase.
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Cool Fact-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact-area text-center mb-100" data-aos="flip-right" data-aos-duration="600">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/india/optimised/in-safe-hai/icons/mail-paypalme-pink.svg" style="height: 100px;width: 100px;">
+                        <br><br>
+                        <p style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif; font-size: 20px"><span class="counter">Skip the logins</span></p>
+                        <p style="font-family: 'Open Sans', sans-serif;font-weight: bold;">Check out faster and easier with One Touch™ and you'll never need to enter your login details again.
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Cool Fact-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact-area text-center mb-100" data-aos="flip-left" data-aos-duration="600">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/india/optimised/in-safe-hai/icons/BuyerProtect-pink.svg" style="height: 100px;width: 100px;">
+                        <br><br>
+                        <p style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 20px"><span class="counter">Free return shipping</span></p>
+                        <p style="font-family: 'Open Sans', sans-serif;font-weight: bold;">Change your mind on a purchase? You can return it and we'll cover up to Rs. 500 of the shipping costs.
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Cool Fact-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact-area text-center mb-100" data-aos="flip-left" data-aos-duration="600">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/india/optimised/in-safe-hai/icons/SecureTech-pink.svg" style="height: 100px;width: 100px;">
+                        <br><br>
+                        <p style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 20px"><span class="counter">Worry-free shopping</span></p>
+                        <p style="font-family: 'Open Sans', sans-serif;font-weight: bold;">Shop with ease and confidence. Your financial details are never shared, not even with the seller.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<br><br><br>
+<section style="background:#efefe9;">
+        <div class="container" data-aos="zoom-in-up" data-aos-easing="ease-in-sine" data-aos-duration="500">
+            <div class="row">
+                <div class="board">
+                    <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+                    <div class="board-inner">
+                    <ul class="nav nav-tabs" id="myTab">
+                    <div class="liner"></div>
+                     <li class="active">
+                     <a href="#home" data-toggle="tab" title="welcome">
+                      <span class="round-tabs one">
+                              <i class="glyphicon glyphicon-home"></i>
+                      </span>
+                  </a></li>
+
+                  <li><a href="#profile" data-toggle="tab" title="profile">
+                     <span class="round-tabs two">
+                         <i class="glyphicon glyphicon-user"></i>
+                     </span>
+           </a>
+                 </li>
+                 <li><a href="#messages" data-toggle="tab" title="bootsnipp goodies">
+                     <span class="round-tabs three">
+                          <i class="glyphicon glyphicon-gift"></i>
+                     </span> </a>
+                     </li>
+
+                     <li><a href="#settings" data-toggle="tab" title="blah blah">
+                         <span class="round-tabs four">
+                              <i class="glyphicon glyphicon-comment"></i>
+                         </span>
+                     </a></li>
+
+                     <li><a href="#doner" data-toggle="tab" title="completed">
+                         <span class="round-tabs five">
+                              <i class="glyphicon glyphicon-ok"></i>
+                         </span> </a>
+                     </li>
+
+                     </ul></div>
+
+                     <div class="tab-content">
+                      <div class="tab-pane fade in active" id="home">
+
+                          <h3 class="head text-center" style="color: #046A8A;text-decoration: ThreeDShadow; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 30px">Welcome to PayU<sup>™</sup> <span style="color:#f48260;">♥</span></h3>
+                          <p class="narrow text-center" style="font-family: 'Open Sans', sans-serif;font-size: 20px;">
+                            Go Easy on your Pocket – Online Recharge, Utility Bill Payment & Booking in the Blink of an Eye
+
+                          </p>
+                          <p class="text-center">
+                    <a href="" class="btn btn-primary btn-outline-rounded ">Start using PayU <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                </p>
+                      </div>
+                      <div class="tab-pane fade" id="profile">
+                          <h3 class="head text-center" style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 30px">Create a PayU Profile</h3>
+                          <p class="narrow text-center" style="font-family: 'Open Sans', sans-serif;font-size: 20px;">
+                              Create your PayU profile today and enjoy hassle free transactions.
+                          </p>
+
+                          <p class="text-center">
+                    <a href="" class="btn btn-primary btn-outline-rounded "> create your profile <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                </p>
+
+                      </div>
+                      <div class="tab-pane fade" id="messages">
+                          <h3 class="head text-center" style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 40px">PayU Offers</h3>
+                          <p class="narrow text-center" style="font-family: 'Open Sans', sans-serif;font-size: 20px;">
+                              Avail offers with best festive deals, discount offers, coupon codes and more.Grab jaw-dropping Paytm Coupons, Deals, Discounts & Cashback Offers while shopping, who wouldn’t love to shop at discounted prices! Paytm presents several wonderful offers across a huge range of products under our stimulating stores.
+
+
+                          </p>
+
+                          <p class="text-center">
+                    <a href="" class="btn btn-primary btn-outline-rounded"> View PayU offers <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                </p>
+                      </div>
+                      <div class="tab-pane fade" id="settings">
+                          <h3 class="head text-center" style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 40px">Chat with your friends</h3>
+                          <p class="narrow text-center" style="font-family: 'Open Sans', sans-serif;font-size: 20px;">
+                              A new offering on our app with a fast and simple messaging service that will let you chat with your friends and family, and send/request money at the same time. You can even chat with your friendly neighborhood shopkeeper and order stuff easily and send them money instantly on delivery.
+
+                          </p>
+
+                          <p class="text-center">
+                </p>
+                      </div>
+                      <div class="tab-pane fade" id="doner">
+  <div class="text-center">
+    <i class="img-intro icon-checkmark-circle"></i>
+</div>
+<h3 class="head text-center" style="color: #046A8A; font-weight:bold;font-family: 'Open Sans', sans-serif;font-size: 40px">One-click recharge</h3>
+<p class="narrow text-center" style="font-family: 'Open Sans', sans-serif;font-size: 20px;">
+Your mobile recharge is just a few clicks away with Paytm.com. With a massive customer base of over 100 million users across the length & breadth of the country, Paytm is your one-stop destination for online mobile recharge. Talk to your loved ones endlessly without being dependent on your nearest retailer. Online recharge facility with us gives you the freedom to top up your mobile at any time and from anywhere.
+
+</p>
+</div>
+<div class="clearfix"></div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+<br><br>
+
+
+
+
+
+
+<div class="how-section1">
+                    <div class="row">
+                        <div class="col-md-4 how-img" style="margin-left: 50px;" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+
+                            <img src="{% static 'dashboard/images/friend.jpg' %}" class="img-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+                            <h4 class="heading">Peer to peer payments</h4>
+                                        <h4 class="subheading">Connect with your friends on PayU and send and receive payments.</h4>
+                        <p class="text-muted">Freedom to work on ideal projects. On GetLance, you run your own business and choose your own clients and projects. Just complete your profile and we’ll highlight ideal jobs. Also search projects, and respond to client invitations.
+                                            Wide variety and high pay. Clients are now posting jobs in hundreds of skill categories, paying top price for great work.
+                                            More and more success. The greater the success you have on projects, the more likely you are to get hired by clients that use GetLance.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="margin-left: 50px;" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+                            <h4>Pay for services available across the campus</h4>
+                                        <h4 class="subheading">GetLance makes it easy to connect with clients and begin doing great work.</h4>
+                                        <p class="text-muted">Streamlined hiring. GetLance’s sophisticated algorithms highlight projects you’re a great fit for.
+                                            Top Rated and Rising Talent programs. Enjoy higher visibility with the added status of prestigious programs.
+                                            Do substantial work with top clients. GetLance pricing encourages freelancers to use GetLance for repeat relationships with their clients.</p>
+                        </div>
+                        <div class="col-md-4 how-img" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+                            <img src="http://worldartsme.com/images/animated-food-clipart-1.jpg" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 how-img" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+                             <img src="https://image.ibb.co/ctSLu9/Work_Section2_freelance_img3.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-once="true">
+                            <h4>One-click recharge</h4>
+                                        <h4 class="subheading">With GetLance, you have the freedom and flexibility to control when, where, and how you work. Each project includes an online workspace shared by you and your client, allowing you to:</h4>
+                                        <p class="text-muted">Send and receive files. Deliver digital assets in a secure environment.
+                                            Share feedback in real time. Use GetLance Messages to communicate via text, chat, or video.
+                                            Use our mobile app. Many features can be accessed on your mobile phone when on the go.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+<!--<div class="container-fluid text-center quote1"><p>Sign up today.<br> Its quick, free and no cash needed in your account.</p></div>-->
+
+
+
+<!--<div class="container">
+	<div class="row">
+		<h2>PayU Services</h2>
+	</div>
+
+	<div class="block">
+      <div class="row" data-aos="fade-left" data-aos-easing="ease-in-sine">
+        <div class="span4">
+          <img class="img-left" src="http://assets.barcroftmedia.com.s3-website-eu-west-1.amazonaws.com/assets/images/recent-images-11.jpg"/>
+          <div class="content-heading"><h3>Experience &nbsp </h3></div>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+     </div>
+     <br/>
+      <div class="row">
+        <div class="span4">
+          <img class="img-right" src="http://www.prelovac.com/vladimir/wp-content/uploads/2008/03/example.jpg"/>
+          <div class="content-heading"><h3>Experience &nbsp </h3></div>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+     </div>
+    </div>
+
+</div>-->
+
+
+
+
+
+<br><br>
+<section class="steps custom-steps" >
+    <div class="container" style="padding: 60px;padding-bottom: 90px;">
+        <header class="row">
+            <div class="col-md-10 center-block text-xs-center">
+                <h2 class="pypl-heading text-center"  style="font-weight: bold;font-size: 30px;line-height: 50px">Sign up now.<br>It's quick, free and no cash needed in your account.</h2>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-md-10 center-block text-xs-center">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr class="style6">
+            </div>
+        </div>
+        <div class="steps__container row">
+            <div class="col-md-4 col-sm-12 steps__step steps__step-0" data-aos="fade-in" data-aos-duration="800" data-aos-easing="ease-in-sine">
+                <span class="steps__circle">1</span>
+                <p class="steps__text "><b>Create your account</b><br>All you need is your email address and a password.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 steps__step steps__step-1" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="800" data-aos-easing="ease-in-sine">
+                <span class="steps__circle">2</span>
+                <p class="steps__text "><b>Tell us about yourself</b><br>We just need your address and contact details.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 steps__step steps__step-2" data-aos="fade-in" data-aos-duration="800" data-aos-delay="2000" data-aos-easing="ease-in-sine"><span class="steps__circle">3</span>
+                <p class="steps__text "><b>Verify and link a card</b><br>Verify your account and link your credit or debit cards to your account.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<a href="{% url 'dashboard:register' %}"> <button class="link-btn" >SignUp</button></a><br><br>
+
+
+
+
+<footer class="footer">
+      <div class="container">
+      <p>© PayU | Privacy Policy | Terms of Service</p>
+      </div>
+    </footer>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

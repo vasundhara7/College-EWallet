@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<title>{% block title %}Transactions{% endblock %}</title>
+
+<br><br>
+<center>
+<div style="background-color:white;width:70%;height:400px;margin:3%;">
+  <br><br><br>
+  <h2>Your PDF is downloaded.</h2><br><br><br>
+  <div style="font-size:15px"><a href={% url 'trans:trans.many' %}>Go Back</a></div>
+</center>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{%  endblock body  %}

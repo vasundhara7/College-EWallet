@@ -1,0 +1,13 @@
+<strong>Transaction going on. please do not refresh nor close the page</strong>
+<br><br>
+<strong>Amount Rs {{ amount }}</strong>
+
+<form name="f1" action="http://128.0.0.1:8000/dummybank/bankpage" method="POST">
+    <input type="hidden" name="amount" value = {{ amount }}>
+    <input type="submit" value="confirm">
+    <a href = url('http://128.0.0.1:8000/dummybank/bankpage')><button type="button" name="button" value="asd"></button></a>
+</form>
+
+<!--<script type="text/javascript">
+document.f1.submit();
+</script>-->

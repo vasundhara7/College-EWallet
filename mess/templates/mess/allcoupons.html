@@ -1,0 +1,49 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}mess{% endblock %}
+{%  block body %}
+		<br><br><br>
+     <a href="{% url 'mess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-8">
+		<div class="container-small" style="background-color:white;border:2px solid #666666;padding:10px">
+
+		<center><h3> Available Coupons </h3></center>
+        <table class="table">
+				<thead> <tr>
+				<th>Coupon</th>
+				<th>Count</th>
+				<th>Action</th>
+                </tr></thead>
+			{% for coupon in coupons %}
+            <tr>
+            <td><button class ="btn btn-default" style="">{{ coupon.amount }}</button></td>
+                <td><button class ="btn btn-default" style="">{{ coupon.count }}</button></td>
+            <td><a style="text-decoration:none" href="{% url 'mess.deletecoupons' coupon.amount %}"  >
+                <button class ="btn btn-danger" style="">Delete</button>
+            </a></td></tr>
+            <br><br>
+            {% empty %}
+            No coupons
+            {% endfor %}
+        </table>
+			</div>
+		</div>
+		</div>
+		<div class="card">
+  <div class="card-body"></div>
+</div>
+		</div>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+	<div class="footer">
+
+	</div>
+
+  {%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

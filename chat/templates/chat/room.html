@@ -1,0 +1,225 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+    <script src="https://use.typekit.net/hoy3lrg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{% static '/chatroom.css' %}" />
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.js"></script>
+  </head>
+
+<body>
+  <div id="frame">
+    <div id="sidepanel">
+      <div id="profile">
+        <div class="wrap">
+          <img id="profile-img" src="{{sen.picture.url}}" class="online" alt="" />
+          <p style="font-size: x-large">{{uzername}}</p>
+        </div>
+      </div>
+      <div id="search">
+        <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+        <input id="myInput" onkeyup="myFunction()" type="text" placeholder="Search contacts..." />
+      </div>
+      <div id="contacts">
+
+        <ul id="myUL">
+          {%for contact in userlist %}
+          {% if contact != uzername %}
+          <li class="contact">
+            <div class="wrap" onclick="roomNameGen('{{userid}}','{{contact.id}}','{{contact.user}}')">
+
+
+              {% if contact.picture.url %}
+                <img src="{{contact.picture.url}}" alt="" />
+
+
+              {% endif %}
+
+              <div class="meta">
+                <p class="name"><a>{{contact.user}}</a></p>
+                {% if contact.phone_number %}
+                <p style="font-size:small">{{contact.phone_number}}</p>
+                {% else %}
+                <p>Phone number not available</p>
+                {% endif %}
+              </div>
+            </div>
+
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="content">
+      <div class="contact-profile">
+        <img src="{{rec.picture.url}}" alt="" />
+        <p id="name12">{{rec.user}}</p>
+
+        <div class="social-media">
+          <!--<i class="fa fa-envelope" aria-hidden="true">ewallet-chat</i>
+          <i class="fa fa-mobile-phone" aria-hidden="true"></i>-->
+          <i style="color:#0055b4;font-size: large"><a href="http://127.0.0.1:8000/dashboard/accounts">Exit Chat</a></i>
+        </div>
+      </div>
+      <div class="messages">
+        <ul id="chat-log">
+          {% if uzername == recname %}
+          <center><h2>welcome to ewallet chat<br>select user to chat</h2></center>
+          {% endif %}
+          {% comment %} <li class="sent">
+            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+            <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+          </li>
+          <li class="replies">
+            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+            <p>When you're backed against the wall, break the god damn thing down.</p>
+          </li> {% endcomment %}
+        </ul>
+      </div>
+      <div class="message-input">
+        <div class="wrap">
+        <input id="chat-message-input"  type="text" style="width:80%" placeholder="Write your message..." />
+
+        <button id="chat-message-submit" class="submit">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+$("chat-message-input").emojioneArea({
+    pickerPosition:"top",
+
+});
+
+</script>
+<script>
+    function roomNameGen(userid,friendid,contact_name){
+        var roomName = [userid,friendid].sort().join("");
+        //var roomName = userid + friendid
+        window.location.pathname = '/chat/' + roomName + '/';
+        document.getElementById("name12").innerHTML = contact_name;
+    };
+
+</script>
+<script>
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+</script>
+<script>
+    function myFunction(){
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            console.log(a);
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+<script>
+    var roomName = {{ room_name_json }};
+    var username = {{ username }};
+    var rezname = {{rezname}};
+
+
+
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+    chatSocket.onopen = function(e) {
+      fetchMessages();
+    }
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        if (data['command'] === 'messages') {
+          for (let i=0; i<data['messages'].length; i++) {
+            createMessage(data['messages'][i]);
+          }
+        } else if (data['command'] === 'new_message'){
+          createMessage(data['message']);
+        }
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        if(username != rezname){
+            var messageInputDom = document.getElementById('chat-message-input');
+            var message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'command': 'new_message',
+                'message': message,
+                'from': username
+            }));
+        }
+        messageInputDom.value = '';
+    };
+
+    function fetchMessages() {
+      chatSocket.send(JSON.stringify({'command': 'fetch_messages' }));
+    }
+
+    function createMessage(data) {
+      var author = data['author'];
+      var msgListTag = document.createElement('li');
+      var imgTag = document.createElement('img');
+      var pTag = document.createElement('p');
+      pTag.textContent = data.content;
+
+
+      if (author === username) {
+        imgTag.src = '{{sen.picture.url}}';
+        msgListTag.className = 'sent';
+      } else {
+        imgTag.src = '{{rec.picture.url}}';
+        msgListTag.className = 'replies';
+      }
+      msgListTag.appendChild(imgTag);
+      msgListTag.appendChild(pTag);
+      document.querySelector('#chat-log').appendChild(msgListTag);
+    }
+
+</script>
+</body>
+
+</html>

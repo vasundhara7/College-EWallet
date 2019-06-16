@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Payment Processing</title>
+        <script>
+            function submitForm() {
+                var postForm = document.forms.postForm;
+                postForm.submit();
+            }
+        </script>
+    </head>
+    <body onload="submitForm();">
+
+        <div>
+            <h2>Payment Gateway Testing Sample</h2>
+            <table>
+                <tr><td>Transaction Id</td><td><strong>{{ txnid }}</strong></td><td>Amount: </td><td><strong>Rs. {{ amount }}</strong></td>
+                    </table>
+            <div >
+                <p>In this page we will genrate hash and send it to payumoney.</p>
+                <br>
+                <p>Please be patient. this process might take some time,<br />please do not hit refresh or browser back button or close this window</p>
+            </div>
+        </div>
+
+        <div>
+            <form name="postForm" action="https://test.payu.in/_payment" method="POST" >
+                {% csrf_token %}
+                <input type="hidden" name="key" value={{ mkey }} />
+                <input type="hidden" name="txnid" value={{ txnid }} />
+                <input type="hidden" name="amount" value = {{ amount }} />
+                <input type="hidden" name="productinfo" value={{ product }} />
+                <input type="hidden" name="firstname" value={{ firstname }} />
+                <input type="hidden" name="email" value={{ email }} />
+                <input type="hidden" name="phone" value={{ phone }}/>
+                <input type="hidden" name="surl" value='www.google.com'/>
+                <input type="hidden" name="furl" value="www.apple.com" />
+                <input type="hidden" name="hash" value={{ hash }}/>
+
+            </form>
+        </div>
+    </body>
+</html>

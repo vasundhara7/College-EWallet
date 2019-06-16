@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!doctype html>
+<head>
+    {% block title%}
+        Forms
+    {% endblock %}
+    <meta charset="utf-8">
+    <title>{{ form.title }}</title>
+    <style>
+        body {font-family:sans-serif; padding:1em 2em;}
+        p {width:50em;}
+        label {display:block; width:10em;}
+        .errorlist {color:#f00;}
+    </style>
+</head>
+<body >
+    {% block body %}
+        <p style="color: #0055b4;font-size: xx-large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forms available</p>
+
+   <!-- <h1>Forms</h1>-->
+    <div>
+    {% for form in forms %}
+    <p style="font-size: x-large;color:#0055b4">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{{ form.get_absolute_url }}" style="color:#0055b4">{{ form.title }}</a></p>
+
+
+
+    {% empty %}
+    <p>No forms created. Go to the <a href="/admin/">admin</a> to create a form.</p>
+    {% endfor %}
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

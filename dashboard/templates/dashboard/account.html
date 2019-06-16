@@ -1,0 +1,207 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block extrahead %}
+        <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}"/>
+        <script type="text/javascript" src="{% static 'dashboard/js/index.js' %}"></script>
+        <script src="{% static 'dashboard/js/particles.js' %}"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid main-div">
+                            <div id="particles-js"></div>
+
+            <div class="container">
+                <div class="row" style="border-bottom: 1px #e0e0e0 solid">
+                        <div class="col-lg-6" style="margin:40px;">
+                            <div class="row">
+                                <div class="profile">
+                                    <img src="{{ user.profile.picture.url }}" style="width: 100px;height: 100px;border-radius: 50%"/>
+                                </div>
+                                <div class="head-desc">
+                                    <a href='{% url 'mess.offers' %}'><button class="get-more">
+                                        Get more out of PayU<i class="fas fa-chevron-down"></i>
+                                    </button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5" style="margin-top: 40px">
+                            <div class="row">
+                              <div class="col-3">
+                                  <a href="{% url 'usermess.index' %}"><span class="goods"><br><center>Mess</center>
+                                  </span></a>
+                              </div>
+                              <div class="col-3">
+                                 <a href="{% url 'canteen:canteen.index' %}"><span class="goods"><br><center>Canteen</center>
+                                  </span></a>
+                              </div>
+                              <div class="col-3">
+                                  <a href="{% url 'student.main' %}"><span class="goods"><br><center>Library</center>
+                                  </span></a>
+                              </div>
+                              <div class="col-3" style="margin-left:10px;">
+                                  <a href="{% url 'cycleshare.ui' %}"><span class="goods"><br><center>Cycles</center>
+                                  </span></a>
+                              </div>
+                              {% for i in forms %}
+                              <div class="col-3">
+                                  <a href="{{ i.get_absolute_url }}"><span class="goods"><br><center>{{ i.title }}</center>
+                                  </span></a>
+                              </div>
+                              {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                        <div class="background">
+                    <div class="col-lg-12 welcome">
+                        <div class="row">
+                        <p class="welcome-title">Welcome, {{ user.first_name }}!</p>
+                        <p class="text-muted title-description">Ready to shop, and send payments easily and more securely? Link a card and ensure it has been enabled for international transactions</p>
+                        <div class="col-lg-4 widgets">
+                            <img src="{% static 'dashboard/images/cart.png' %}" width="100px" height="100px" class="widget-img"/>
+                            <p class="text-muted" align="center">Buyer Protection - Shop with peace of mind. PayU Buyer Protection safeguards your eligible purchases.</p>
+                        </div>
+                        <div class="col-lg-4 widgets">
+                            <img src="{% static 'dashboard/images/antivirus.png' %}" width="100px" height="100px" class="widget-img"/>
+                            <p class="text-muted" align="center">More secure - Pay at million of online stores globally without exposing your financial information.</p>
+                        </div>
+                        <div class="col-lg-4 widgets">
+                            <img src="{% static 'dashboard/images/ribbon.png' %}" width="100px" height="100px" class="widget-img"/>
+                            <p class="text-muted" align="center">Reward points - Earn reward points when you pay with card*.</p>
+                        </div>
+                        </div><a href="{% url 'dashboard:explore' %}"> <button class="link-btn" >Explore PayU Profile</button></a>
+                    <p align="center" style="margin-top:20px;">* Reward schemes may differ when using PayU. Please refer to your card issusers.</p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+                <a href="http://127.0.0.1:8000/chat" class="float">
+                    <center>
+                        <i class="far fa-comments my-float" style='font-size:24px'></i>
+                    </center>
+                </a>
+        </div>
+
+        <script>
+            /* ---- particles.js config ---- */
+
+// ParticlesJS Config.
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 80,
+      "density": {
+        "enable": true,
+        "value_area": 700
+      }
+    },
+    "color": {
+      "value": "#0070ba"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#0070ba"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#0070ba",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 6,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 140,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+
+
+/* ---- stats.js config ---- */
+        </script>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}mess{% endblock %}
+{%  block body %}
+		<br><br><br>
+     <a href="{% url 'mess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+		<div class="container-small" style="background-color:white;border:2px solid #666666;padding:10px">
+		<h3> Sub : {{post.title}} </h3>
+			<div style="font-size:18px;color:#666666" align="right">Posted at : {{post.addTime}}</div>
+			<br>
+			<p style="font-size:20px"> {{post.body }}</p>
+
+            <a class="btn btn-primary" href="{% url 'mess.editpost' pk=post.postId %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'mess.deletepost' pk=post.postId %}">Delete</a>
+			</div>
+		</div>
+		</div>
+		<div class="card">
+  <div class="card-body"></div>
+</div>
+		</div>
+
+
+
+	<div class="footer">
+
+	</div>
+
+  {%  endblock body  %}
+
+{% block script %}
+
+{% endblock script %}

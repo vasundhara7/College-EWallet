@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}"/>
+{% endblock %}
+
+
+
+{% block body %}
+<br><br><br><br>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="col-lg-3 divs" style="width: 21vw;margin-left: 15px;background-color: #fff;padding: 20px;">
+    <p><span class="glyphicon glyphicon-user"></span> <strong>{{ user.username }}</strong></p><br>
+    <p>Wallet balance: {{user.profile.balance }}</p><br>
+    <a href="{% url 'recharge:recharge' %}">Recharge your wallet</a>
+</div>
+<div class="col-lg-6 divs" style="width: 50vw;float: right;">
+<form method="get" action="{% url 'dashboard:payments' %}">
+    <div class="input-group">
+        <input type="text" class="form-control" name="q" value="" placeholder="Search for your friends" >
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+<br><br><br>
+    {% for user in all_users %}
+                    <form method="get" action="{% url 'dashboard:pay' %}">
+
+          <div class="panel panel-default" style="width: 90%;margin-left: 130px;float: right;">
+<div class="panel-body"><span class="glyphicon glyphicon-user"></span><strong> {{ user.user.first_name }}</strong>&nbsp&nbsp&nbsp Undergraduate {{ user.year }}
+                      <input type="hidden" name="username" value="{{user.user.username}}" />
+
+                  <input type="submit" class="btn btn-danger" style="float: right" value="Pay">
+</div>
+          </div></form>
+
+    {% endfor %}
+</div>
+        </div>
+        </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,268 @@
+<html>
+<head>
+     {% load static from staticfiles %}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}"/>
+
+    <style>
+
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
++  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px;
+  color: #cccccc;
+}
+
+
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+
+
+
+
+
+/* FORM TYPOGRAPHY*/
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #39ace7;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=date] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+
+
+.mybutton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #0055b4;
+    border-radius:45px;
+    width: 250px;
+}
+
+.mybutton:hover {
+    background-color: #0055b4;
+    color: white;
+}
+
+</style>
+</head>
+<body>
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+
+              </button>
+              <a class="navbar-brand" href="{% url 'dashboard:accounts' %}">PayU</a>
+
+          </div>
+          <div class="collapse navbar-collapse" id="topNavBar">
+              <ul class="nav navbar-nav">
+                  <li class="">
+                      <a href="{% url 'dashboard:payments' %}">
+                          <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>&nbsp;
+                          Send and Request money
+                      </a>
+                  </li>
+                  <li class="">
+                      <a href="{% url 'recharge:recharge' %}">
+                          <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>&nbsp;
+                          Recharge your wallet
+                      </a>
+                  </li>
+                  <li class="">
+                      <a href="{% url 'mess.offers' %}">
+                          <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;
+                          Offers
+                      </a>
+                  </li>
+
+              </ul>
+
+
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="">
+                      <a href="{%url 'trans:trans.many'%}">
+                          <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp
+                      </a>
+                  </li>
+
+                  <li class="">
+                      <a href="{% url 'dashboard:edit_profile' %}">
+                          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Edit Profile
+                      </a>
+                  </li>
+
+                  <li class="">
+                      <a href="{% url 'dashboard:logout' %}">
+                          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+                      </a>
+                  </li>
+
+              </ul>
+
+          </div>
+      </div>
+  </nav>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+       <br>{% if error %}
+        <center><div style="border:1px solid red; background: maroon; border-radius:5px; color:white; width: 250px; height:25px; padding:2px;">
+            Please enter all details
+        </div></center>
+    {% endif %}
+    <br>
+    <form action="{% url 'result' %}" method="post">
+        {% csrf_token %}
+      <input type="text" id="studentid"  name="student_ID" placeholder="Student id">
+      <br><br><input type="date" id="date"  name="date" placeholder= "Date">
+      <br><br><input type="text" id="book"  name="book_ID" placeholder="Book id">
+       <br><br> <input class ="mybutton" type="submit" name="submit">
+        </form>
+
+
+  </div>
+</div>
+<footer>
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted" style="color: #333333">HELP</a>
+                    </li>
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted">CONTACT US</a>
+                    </li>
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted">SECURITY</a>
+                    </li>
+                </ul>
+                <div class="col-lg-12" style="width:100%;background: #e0e0e0;height:1.2px"></div>
+                <ul class="nav-list" style="float:right;">
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">© 1999-2018 All rights reserved.</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">|</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                    <a class="list-item text-muted" style="font-size: .6875rem">Privacy</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">Legal</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>{{ form.title }}</title>
+    <style>
+        table,tr,th{padding: 25px; }
+        input{color:black;border: solid black 0.5px}
+    </style>
+</head>
+<body>
+
+<h1 style="color: #0055b4 ;font-size: xx-large"><b>{{ form.title }}</b></h1><br><br>
+    {% if form.intro %}
+    <p style="font-size: x-large;">{{ form.intro }}</p>
+    {% endif %}
+<br><br>
+    {{ form_for_form.media }}
+
+    <form style="color: black;font-size: x-large " action="{{ form.get_absolute_url }}" method="post"
+        {% if form_for_form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+       <table style="font-size: large;color:black">
+
+
+        {% csrf_token %}
+        {{ form_for_form.as_table}}
+
+        <!--<div style="clear:left">&nbsp;</div>-->
+
+        </table>
+        <br>
+         <input style="background-color: #0055b4;color:white" class="btn btn-primary" type="submit"  value="{{ form.button_text }}">
+    </form>
+
+
+
+</body>
+</html>
+

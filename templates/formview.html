@@ -1,0 +1,55 @@
+<!doctype html>
+
+{%  extends "dashboard/base.html" %}
+ {% load forms_builder_tags %}
+{% load static %} 
+<head>
+
+    <meta charset="utf-8">
+
+    <title>{{ form.title }}</title>
+    {% block title %}
+            {{ form.title }}
+    {% endblock %}
+    <style>
+        body {text-align-all:center;font-family:sans-serif; padding:1em 2em;}
+        p {width:50em; clear:both;}
+        label {display:block;color: #337ab7; float:left; width:8em; margin:0 1.2em 1.2em 0;}
+        li {list-style-type:none;}
+        li label {width:auto; cursor:pointer;}
+
+
+    </style>
+</head>
+{% block body %}
+
+
+<body style="position: center;">
+
+
+
+<br><br><br><br><br><br>
+
+
+<div style=" color:#0055b4;background-color: white;width:700px;padding:80px;border-radius: 10px" class="container">
+    <center>
+    <table>
+
+            {% render_built_form form %}
+
+    </table>
+    </center>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+{% endblock %}

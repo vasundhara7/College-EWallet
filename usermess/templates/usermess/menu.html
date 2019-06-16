@@ -1,0 +1,20 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Usermess{% endblock %}
+{%  block body %}
+<br>
+<br>
+<br>
+    <a href="{% url 'usermess.index' %}"><span style="font-size:25px;position:relative; left:70px;" class="glyphicon glyphicon-chevron-left"></span> </a>
+
+	<div class="container">
+    <div class="row">
+		<div class="col-sm-12">
+            <center><h2>Mess Menu</h2></center>
+            {%  load static %}
+            <img style="width:100%;" src="{%  static 'usermess/messmenu.jpg'  %}">
+        </div>
+    </div>
+    </div>
+	<br>
+
+{%  endblock body  %}

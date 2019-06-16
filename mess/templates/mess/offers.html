@@ -1,0 +1,174 @@
+{%  extends "dashboard/base.html" %}
+{% block title %}Offers{% endblock %}
+{% load staticfiles %}
+{%  block extrahead %}
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <style>
+        p,h1,h2,small{
+            font-family: 'Didact Gothic';
+
+        }
+    </style>
+{%  endblock %}
+{%  block body %}
+    <br>
+		<div class="row">
+
+                <div style="background-image: url('{% static 'mess/bg.jpg' %}')">
+                    <div class="row">
+                        <br><br><br><br>
+
+
+                        <div class="col-sm-6">
+                        <center>
+                            <p style="font-size:50px;color:whitesmoke;font-style:bold;">
+                                <br>
+                                Send gift card to your friends <br> using our
+                                <span style="font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-style:italic">
+                                PayU
+                                </span>
+                                <br><br><br>
+                            </p>
+                        </center>
+                        </div>
+                        <div class="col-sm-5">
+
+                        </div>
+                        <div class="col-sm-1">
+                        </div>
+
+                    </div>
+                </div>
+
+            		    <div class="col-sm-12">
+                            <div class="container" >
+                                <h1 style="font-size:140px">Offers!
+                                <img style="height:70px;width:70px" src="{% static 'mess/offers.png' %}"></h1>
+                                <br>
+                            </div>
+                <div>
+                    <div style="background-color: blueviolet;background-image: linear-gradient(to right, blueviolet , deeppink);border-radius:0px;">
+                       <div class="row">
+                            <br><br>
+
+                            <div class="col-sm-4"  >
+                                <center>
+                                     <img style="width:290px;height:290px;border-radius: 100%" src="{% static 'mess/mess1.png' %}">
+                                </center>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <center>
+                                     <img style="width:300px;height:300px;border-radius:0%" src="{% static 'mess/cycle1.png' %}">
+                                </center>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <center>
+                                     <img style="width:300px;height:300px;border-radius:0%" src="{% static 'mess/fest.png' %}">
+                                </center>
+                            </div>
+                            </div>
+                        <div class="row">
+                            <br><br>
+
+                            <div class="col-sm-4"  >
+                                <center>
+                                   <p style="font-size:30px;color:white;font-family:'Didact Gothic'; ">
+                                       Discount on mess coupons
+                                   </p>
+                                </center>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <center>
+                                   <p style="font-size:30px;color:white"class="welcome-title title-description">
+                                      Reduced Cycle rates for users with subscription
+                                   </p>
+                                </center>
+                            </div>
+                            <div class="col-sm-4"  >
+                                <center>
+                                   <p style="font-size:30px;color:white"class="welcome-title title-description">
+                                       Special events during fests and festivals
+                                   </p>
+                                </center>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <center>
+                                <br>
+                                NOTE: Applicable from next semester
+                            </center>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <br><br><br>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-5">
+                        <center>
+                             <img style="width:450px;height:300px;border-radius:0%" src="{% static 'mess/canteen.png' %}">
+                        </center>
+                        <br><br><br>
+                    </div>
+                    <div class="col-sm-5">
+                        <center>
+
+                            <p style="font-size:70px;font-family:'Didact Gothic'; ">
+                                       New Canteen &amp; <br>
+                                    Many more to come.
+                            <br>
+                           </p>
+                        </center>
+                        <br><br>
+                    </div>
+
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+
+                <div style="background-color: dodgerblue;background-image: linear-gradient(to right, dodgerblue, antiquewhite);border-radius:0px;">
+
+                    <div class="row">
+                    <br><br>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-5">
+                        <center>
+                             <img style="width:300px;height:300px;border-radius:0%" src="{% static 'mess/bank.png' %}">
+                        </center>
+
+                        <br><br>
+                    </div>
+                    <div class="col-sm-5">
+                        <br><br>
+                        <center>
+
+                            <p style="font-size:    50px;font-family:'Didact Gothic'; ">
+                                   Recharge using our bank, <br> get 5% extra PayU Money.
+                           </p>
+                        </center>
+                    </div>
+
+                    <div class="col-sm-1">
+                         <small>*T&C apply</small>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+  {%  endblock body  %}
+
+{% block script %}
+	function deleteorder() {
+    alert("Can't delete the item when its ordered. Make it unavailable if you want to stop taking orders for the item.");
+}
+
+{% endblock script %}

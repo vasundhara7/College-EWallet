@@ -1,0 +1,28 @@
+{% extends 'recharge/base.html' %}
+
+{% block title %}Recharge{% endblock %}
+{%  block body %}
+
+<br><br><br><br>
+<center>
+  <div class="container" style="background-color: white; width:40%; height: 500px">
+    <div>
+        <center>
+          <strong>Transaction going on. please do not refresh nor close the page</strong>
+          <br><br>
+          <strong>Amount Rs {{ amount }}</strong>
+
+          <form name="f1" action="bankpage" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="amount" value = {{ amount }}>
+          </form>
+
+          <script type="text/javascript">
+          document.f1.submit();
+          </script>
+        </center>
+    </div>
+  </div>
+</center>
+
+{%  endblock body  %}

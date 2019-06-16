@@ -1,0 +1,46 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Request{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+{% endblock %}
+
+{%  block body %}
+
+<br><br><br><br><br><br>
+
+<div class='container' id='payment' style="visibility: visible;background-color:white; width:30%; height:450px;">
+  <div>
+    <br>
+      <h2 style='text-align:left;'> Request Payment </h2><hr>
+    <br>
+  </div>
+  <table>
+      <form name="payment_request" method="POST" >
+          {% csrf_token %}
+          <span style="font-size: 23px; text-align:left;">Amount :</span><br>
+          <input type="number" name="amount" style='margin: 8px 0;
+                                                    display: inline-block;
+                                                    border: 1px solid #ccc;
+                                                    border-radius: 4px;
+                                                    box-sizing: border-box;
+                                                    height:40px;
+                                                    width:60%;'/>
+          <br><br><br><br><br>
+          <small class='smallc'>Note:- After clicking the request button, please wait till the customer makes a payment with his access card</small>
+          <br><br>
+          <input type="submit" class="mybutton" value='Request'/>
+      </form>
+  </table>
+</div>
+
+<div id='waiting' style="visibility: hidden">
+Waiting......
+</div>
+
+{%  endblock body  %}
+
+<script>
+
+</script>

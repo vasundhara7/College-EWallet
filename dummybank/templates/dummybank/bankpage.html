@@ -1,0 +1,7 @@
+<form name="option" action="dummybank/response.html" method="POST">
+    {% csrf_token %}
+    amount transferring is {{ amount }}
+    <input type="checkbox" name="success"> SUCCESS
+    <input type="checkbox" name="failure"> FAILURE
+    <input type="submit" value="Pay">
+</form>

@@ -1,0 +1,9 @@
+pycrypto
+django-forms-builder
+django-email-extras
+django-phonenumber-field
+django-crispy-forms
+Pillow
+channels
+channels_redis
+pypiwin32

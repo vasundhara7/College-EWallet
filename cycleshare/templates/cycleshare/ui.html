@@ -1,0 +1,242 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Viberr{% endblock %}</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.mybutton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #0055b4;
+    border-radius:45px;
+    width: 250px;
+}
+.mybutton:hover {
+    background-color: #0055b4;
+    color: white;
+}
+
+.img1,.img2,.img3{
+    height:25%;
+
+}
+.img1{
+    float:left;
+    margin-left:55px;
+    top:0%;
+}
+.img12{
+    height:150px;
+    width:160px;
+}
+.img13{
+    height:140px;
+    width:150px;
+}
+
+.img2{
+    float:left;
+    margin-left:7%;
+    top:0%;
+    }
+ .img3{
+    margin-left:70%;
+     }
+body {
+    background-color: #f5f7fa;
+
+}
+
+.navbar-default{
+    border-radius: 0;
+    background-color: #0055b4 !important;
+    padding: 10px;
+    padding-left: 30px;
+    display:inline-block;
+}
+#navdisplay{
+    display:block;
+}
+.navbar-default .navbar-brand{
+    color:white;
+    padding-right: 50px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+
+          </button>
+          <a class="navbar-brand" href="{% url 'dashboard:accounts' %}">PayU</a>
+
+      </div>
+      <div class="collapse navbar-collapse" id="topNavBar">
+          <ul class="nav navbar-nav">
+              <li class="">
+                  <a href="{% url 'dashboard:payments' %}">
+                      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>&nbsp;
+                      Send and Request money
+                  </a>
+              </li>
+              <li class="">
+                  <a href="{% url 'recharge:recharge' %}">
+                      <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>&nbsp;
+                      Recharge your wallet
+                  </a>
+              </li>
+              <li class="">
+                  <a href="{% url 'mess.offers' %}">
+                      <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;
+                      Offers
+                  </a>
+              </li>
+
+          </ul>
+
+
+          <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                  <a href="{%url 'trans:trans.many'%}">
+                      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp
+                  </a>
+              </li>
+
+              <li class="">
+                  <a href="{% url 'dashboard:edit_profile' %}">
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Edit Profile
+                  </a>
+              </li>
+
+              <li class="">
+                  <a href="{% url 'dashboard:logout' %}">
+                      <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+                  </a>
+              </li>
+
+          </ul>
+
+      </div>
+  </div>
+</nav>
+   <br><br><br><br><br><br>
+<center>
+   <!-- <div class="btn">
+      <div class="container" style="background-color:white; width:35%;"><a href="{% url 'cycleshare.cycleshare' %}"><img class="img1 " src="{% static 'cycleshare/images/img3.PNG' %}" /></a></div>
+        <a href="{% url 'cycleshare.available' %}"><img class="img2 " src="{% static 'cycleshare/images/img1.PNG' %}"/></a>
+        <a href="{% url 'cycleshare.subscribe' %}"><img class="img3 " src="{% static 'cycleshare/images/img2.PNG' %}"/></a>
+    </div>-->
+        </div><br><br>
+
+    <div class="container img1" style="background-color:white; height:450px; width:26%;"><br><br>
+     <form action="{% url 'cycleshare.cycleshare' %}" method="post">
+         {% csrf_token %}
+         <center><a ><img class="img12 " src="{% static 'cycleshare/images/download12.png' %}"/></a></center>
+        <br><h1>Book Cycles</h1><br>
+        <span style="font-size:14px;color:rgb(200,200,200)">Book cycles you want<br>to ride </span>
+       <br><br> <input class ="mybutton" type="submit" value="Book" name="submit">
+        </form>
+    </div>
+
+    <div class="container img2" style="background-color:white; height:450px; width:26%;"><br><br>
+         <form action="{% url 'cycleshare.available' %}" method="post">
+         {% csrf_token %}
+
+        <center><a><img class="img12 " src="{% static 'cycleshare/images/download13.png' %}"/></a></center>
+    <br><h1>Availability</h1><br>
+        <span style="font-size:14px;color:rgb(200,200,200)">Check availability<br>of Cycles</span>
+    <br><br> <input class ="mybutton" type="submit" value="Check" name="submit">
+    </form>
+    </div>
+    <div class="container img3" style="background-color:white; height:450px; width:26%;"><br><br>
+         <form action="{% url 'cycleshare.subscribe' %}" method="post">
+         {% csrf_token %}
+
+         <center>    <a><img class="img13 " src="{% static 'cycleshare/images/download14.png' %}"/></a></center>
+        <br><h1>Subscribe</h1><br>
+        <span style="font-size:14px;color:rgb(200,200,200)">Subscribe cycles for<br>Month and Week</span>
+    <br><br> <input class ="mybutton" type="submit" value="Subscribe" name="submit">
+         </form>
+    </div>
+   <br><br><br><h3> <a href="{% url 'cycleshare.recent' %}">Recent Bookings</a></h3>
+</center>
+<br><br><br><br><br><br>
+<footer>
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted" style="color: #333333">HELP</a>
+                    </li>
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted">CONTACT US</a>
+                    </li>
+                    <li class="nav-list-item-left">
+                        <a class="list-item text-muted">SECURITY</a>
+                    </li>
+                </ul>
+                <div class="col-lg-12" style="width:100%;background: #e0e0e0;height:1.2px"></div>
+                <ul class="nav-list" style="float:right;">
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">© 1999-2018 All rights reserved.</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">|</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                    <a class="list-item text-muted" style="font-size: .6875rem">Privacy</a>
+                    </li>
+                    <li class="nav-list-item-right">
+                        <a class="list-item text-muted" style="font-size: .6875rem">Legal</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+</body>
+</html>
